@@ -1,0 +1,107 @@
+
+:root{
+    --verde: #0c443a;
+    --limon: #25d1b2;
+    --degradado: linear-gradient(90deg, var(--limon), var(--verde));
+}
+*{/* es necesario de #8 para usar la url del #1 */
+    
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    text-transform: capitalize;/* p´q´ la 1°letra de menú sea MAYUSCULA */
+}
+*::selection{
+    background: var(--limon);
+    color: white;
+}
+html{
+    font-size: 62.4%;
+    overflow: hidden;
+}
+body{
+    background: #f9f9f9;
+}
+header{/* Cómo Crear Una PÁGINA WEB solo con HTML y CSS ▶︎ El MENU  13:03 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+    padding: 2rem 9%;/* GROSOR Y MARGENES DEL LOGO Y EL MENÚ */
+    display: flex;/* LOGO Y MENU ALINEADOS pero juntos */
+    align-items: center;
+    justify-content: space-between;/* LOGO SEPARADO de MENU */
+    z-index: 1000;
+}
+header .logo{
+    font-size: 2rem;
+    color: var(--verde);
+}
+header .logo span{
+    color: var(--limon);
+}
+header .navbar a{
+    font-size: 1.8rem;
+    margin-left: 2rem;/* ITEM SEPARADOS margenes para items de menu */
+    color: var(--verde);
+}
+header .navbar a:hover{
+    color: var(--limon);/* COLOR al HOVEAR items de menu */
+}
+header input{
+    display: none;/* desaparece cuadradito de html */
+}
+header label{
+    font-size: 3rem;/* TAMAÑO DE AMBURGUESA(barritas) */
+    color: var(--verde);
+    cursor: pointer;
+    visibility: hidden;/* DESAPARECE AMBURGUESA */
+    opacity: 0;
+}
+@media(max-width:1200px){ /* TAMAÑO PC */
+    html{
+        font-size: 55%;
+    }
+}
+@media(max-width:768px){
+    header label{
+        visibility: visible;
+        opacity: 1;/* APARECE AMBURGUESA */
+    }
+
+    header .navbar{
+    position: absolute;/* MENU MONTO A LOGO */
+    top: 100%;/* MENU BAJA debajo de la linea del logo */
+    left: 0;/* MENU A LA IZQUIERDA */
+    width: 100%;
+    background: white;/* DESAPARECE LINEA DEL LOGO */
+    padding: 1rem 2rem;
+    border-top: .1rem solid rgba(0, 0, 0, .2);/* s´V linea bajo el LOGO */
+    box-shadow: 0.5rem 1rem rgba(0, 0, 0, .1);/* lineaLOGO TENUE y gruesa */
+    transform-origin: top;
+    transform: scaleY(0);
+    opacity: 0;
+    }
+    header .navbar a{/* último paso MENU VERTICAL */
+        display: block;
+        margin: 2rem 0;
+        font-size: 2rem;
+    }   
+    header input:checked ~ .navbar{
+    transform: scaleY(1);
+    opacity: 1;
+    }
+    header input:checked ~ label::before{
+    content: '\f00d';
+    }
+}
+@media(max-width:450px){
+    html{
+        font-size: 49%;
+    }
+}
